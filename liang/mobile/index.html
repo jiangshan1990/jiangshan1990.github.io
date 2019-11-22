@@ -23,478 +23,230 @@
     <meta name="description" itemprop="description" content=""/>
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <!--<script src="/view/vconsole.min.js"></script>-->
-    <!--<script>-->
-        <!--vConsole = new VConsole();-->
-    <!--</script>-->
-    <!--<style>-->
-        <!--#__vconsole .vc-switch {font-size: 12px;   padding: 1em;}-->
-    <!--</style>-->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta name="renderer" content="webkit">
+	<style type="text/css">
+		body{color:#222;-webkit-text-size-adjust:none;}
+		body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl, dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td,iframe{margin:0; padding:0;}
+		h1,h2,h3,h4,h5,h6{font-size:100%;}
+		body,button,input,select,textarea {font-family:Tahoma,Arial,Roboto,”Droid Sans”,”Helvetica Neue”,”Droid Sans Fallback”,”Heiti SC”,sans-self;font-size:62.5%; line-height:1.5;}
+		ol,ul{list-style:none;}
+		
+		html,body{ width:100%; height:100%; overflow:hidden;}
+		.section-wrap{ width:100%;height:100%;overflow:visible;transition:transform 1s cubic-bezier(0.86,0,0.03,1);-webkit-transition:-webkit-transform 1s cubic-bezier(0.86,0,0.03,1);}
+		.section-wrap .section{ position:relative; width:100%; height:100%; background-position:center center; background-repeat:no-repeat;}
+		.section-wrap .section .title{width:100%;position:absolute;top:10%;color:#fff;font-size:2.4em;text-align:center;}
+		.section-wrap .section .title p{ padding:0 4%;opacity:0}
+		.section-wrap .section .title.active .tit{ opacity:1;transform:translateY(-25px);-webkit-transform:translateY(-25px);transition:all 2s cubic-bezier(0.86,0,0.8,1);-webkit-transition:all 2s cubic-bezier(0.86,0,0.8,1);}
+		.section-wrap .section-1{ background-color:#337ab7}
+		.section-wrap .section-2{ background-color:#5cb85c}
+		.section-wrap .section-3{ background-color:#5bc0de}
+		.section-wrap .section-4{ background-color:#f0ad4e}
+		.section-wrap .section-5{ background-color:#d9534f}
+		.put-section-0{ transform:translateY(0);-webkit-transform:translateY(0);}
+		.put-section-1{ transform:translateY(-100%);-webkit-transform:translateY(-100%);}
+		.put-section-2{ transform:translateY(-200%);-webkit-transform:translateY(-200%);}
+		.put-section-3{ transform:translateY(-300%);-webkit-transform:translateY(-300%);}
+		.put-section-4{ transform:translateY(-400%);-webkit-transform:translateY(-400%);}
+		.section-btn{ width:14px;position:fixed;right:4%;top:50%;}
+		.section-btn li{ width:14px;height:14px;cursor:pointer;text-indent:-9999px;border-radius:50%;-webkit-border-radius:50%;margin-bottom:12px; background:#BD362F;text-align:center; color:#fff; onsor:pointer;}
+		.section-btn li.on{ background:#fff}
+		.arrow{ opacity:1;animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;-webkit-animation:arrow 3s cubic-bezier(0.5,0,0.1,1) infinite;transform:rotate(-90deg);-webkit-transform:rotate(-90deg); position:absolute;bottom:10px;left:50%;margin-left:-30px;width:60px;height:60px;border-radius:100%;-webkit-border-radius:100%;line-height:60px;text-align:center;font-size:20px;color:#fff;border:1px solid #fff;cursor:pointer;overflow:hidden;}
+		.arrow:hover{ animation-play-state:paused;-webkit-animation-play-state:paused;}
+		@keyframes arrow{ %0,%100{bottom:10px; opacity:1;} 50%{bottom:50px; opacity:.5} }
+		@-webkit-keyframes arrow{ %0,%100{bottom:10px; opacity:1;} 50%{bottom:50px; opacity:.5} }
+	</style>
+	<!--[if lte IE 8]>
+	<style type="text/css">
+		html,body{width:100%; height:100%; overflow:scroll}
+		.section-btn{display:none;}
+	</style>
+    <![endif]-->
 
-    <link rel="stylesheet"
-          href="/view/css/eqShow-2.1.5.3.css?v=102114482"/>
-    <script>
-        var your_demain = 'http://www.zhizuoh5.com';
-        var your_webname = '八图';
-        var logo_url = '八图';
-        var lastpagelink = 'http://www.zhizuoh5.com';
-        var lastpagetext_color = '#23a3d3';
-        var lastpagetext = '八图';
-        var jubao_link = '';
-        // 解决安卓手机微信内部调整字体大小导致的错乱
-        (function() {
-            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
-                handleFontSize()
-            } else {
-                if (document.addEventListener) {
-                    document.addEventListener("WeixinJSBridgeReady", handleFontSize, false)
-                } else if (document.attachEvent) {
-                    document.attachEvent("WeixinJSBridgeReady", handleFontSize);
-                    document.attachEvent("onWeixinJSBridgeReady", handleFontSize)
-                }
-            }
-            function handleFontSize() {
-                WeixinJSBridge.invoke('setFontSizeCallback', {
-                    'fontSize': 0
-                });
-                WeixinJSBridge.on('menu:setfont',
-                    function() {
-                        WeixinJSBridge.invoke('setFontSizeCallback', {
-                            'fontSize': 0
-                        })
-                    })
-            }
-        })();
-    </script>
-<script type="text/javascript" src="/view/eqShow-preview-2.1.5.3.js?v=102114482"></script>
+    <!-- 滚动页面 -->
+    <link rel="stylesheet" href="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/makaElementEffect.css">
+  <link rel="stylesheet" href="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/animationOnAndOut.css">
+  <link rel="canonical" href="http://maka.im/viewer/k/T_B1XC11JB"> 
 
-    <link rel="stylesheet" href="/Public/css/my52.css"/>
-    <link rel="stylesheet" href="/assets/v2/css/loaders.css">
-    <style>
-        body{
-            -webkit-text-size-adjust:100% !important;
-            background: rgba(168, 213, 218, 0.5) !important;
-        }
-        .noscroll,
-        .noscroll body {
-            height: 100%;
-            overflow: hidden;
-        }
+  <script src="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/hm.js"></script><script src="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/statisticSDK.js"></script>
+  <script src="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/bundle.js" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    !(function(){
+      var dsn = 'https://2be0c552203d453bbe437546e93ad445@sentry2.maka.im/62'
+      Sentry.init({ dsn: dsn, sampleRate: 0.1 });
+    })()
+  </script>  
+    <link href="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/main.css" rel="stylesheet">
+   <script>
+    window.viewerConfig = {"jsonHost":"//res.maka.im/","apiHost":"//api.maka.im/","imgHost":"//img1.maka.im/","musicHost":"//res.maka.im/","resHost":"//res.maka.im/","fontHost":"//font.maka.im/","env":"production"}
+    window.projectVersion = {"id":"T_B1XC11JB","uid":4313492,"title":" 招生    培训   书法   书法培训   中国古典   中国风  假期培训  邀请","content":"  招生    培训   书法   书法培训   中国古典   中国风  假期培训   邀请","p_version":"23","status":"pass","thumb":"//img1.maka.im/user/4313492thumb/5a831b1f08bc68ce4e681e523b2fffa3.jpg@0-182-640-640a","is_delete":0,"type":"H5","detail_type_name":"","json_url":"//res.maka.im/user/4313492/template/T_B1XC11JB/T_B1XC11JB_v23.json","capture":"https://img1.maka.im/user/4313492/poster/T_B1XC11JB/T_B1XC11JB_v23.jpg","vip_config":null,"origin_thumb":"//img1.maka.im/user/4313492thumb/5a831b1f08bc68ce4e681e523b2fffa3.jpg@0-182-640-640a","wx_thumb":"//img1.maka.im/user/4313492thumb/5a831b1f08bc68ce4e681e523b2fffa3.jpg@0-182-640-640a","isnodeproxy":false,"showad":false,"isTempOffline":false,"pcViewerUrl":"http://maka.im/pcviewer/k/T_B1XC11JB","canonical":"http://maka.im/viewer/k/T_B1XC11JB"}
+    window.remote_ip_info = {}
+    
+   </script>
 
-        .noscroll body {
-            position: relative;
-        }
 
-        .nopayed {
-            position: fixed;
-            background-color: #e1e7e4;
-            left: 0;
-            right: 0;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            color: #0cb46a;
-        }
+<script>
+  window.isProduction = true
+  var server_url = 'https://sensor-push.maka.im/sa?token=214651bad853e6ca&project='+(window.isProduction ? 'production' : "default");
+  (function(para) {
+    var n = para.name;
+    window['sensorsDataAnalytic201505'] = n;
+    window[n] = {
+      _q: [],
+      para: para
+    };
+  })({
+    sdk_url: '//res.maka.im/assets/sensordata/sensorsdata.min.js',
+    heatmap_url: '//res.maka.im/assets/sensordata/heatmap.min.js',
+    name: 'sa',
+    server_url: server_url
+  });
+</script><script src="%E6%8B%9B%E7%94%9F%20%E5%9F%B9%E8%AE%AD%20%E4%B9%A6%E6%B3%95%20%E4%B9%A6%E6%B3%95%E5%9F%B9%E8%AE%AD%20%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%20%E4%B8%AD%E5%9B%BD%E9%A3%8E%20%E5%81%87%E6%9C%9F%E5%9F%B9%E8%AE%AD%20%E9%82%80%E8%AF%B7_files/sensorsdata.js"></script><script>
+  window.tools = {
+    getCookie: function(name)
+    {
+      var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+      if(arr=document.cookie.match(reg))
+        return arr[2];
+      else
+        return null;
+    }
+  }
+  const init = function() {
+    const uid = window.tools.getCookie('Makauid')
+    //修复ie环境下无sa变量值报错的问题
+    try{
+      var sa = window.sa
+      if (uid) {
+        sa && sa.login && sa.login(uid)
+      } else {
+        sa && sa.logout && sa.logout()
+      }
+    }catch(e){console.log(e)}
+  }
 
-        .nopayed a {
-            margin-left: 5px;
-            font-size: 14px;
-        }
-
-        .return_myworks {
-            position: fixed;
-            left: 130px;
-            top: 152px;
-        }
-
-        .return_myworks a {
-            display: block;
-            width: 158px;
-            height: 45px;
-            line-height: 45px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff !important;
-            font-size: 15px;
-            border-radius: 5px;
-            text-align: center;
-
-        }
-
-        .return_logo {
-            position: fixed;
-            left: 130px;
-            top: 66px;
-        }
-
-        #warp {
-            height: 100%;
-            overflow: hidden;
-        }
-
-        #warp #content {
-            height: 100%;
-            overflow-y: auto;
-        }
-
-        .kpicon {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            display: block;
-            position: relative;
-
-        }
-
-        .kpicon::before {
-            background-repeat: no-repeat;
-            background-size: 250% 250%;
-            background-position: center center;
-            filter: blur(20px);
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 10;
-            content: '';
-            background-image: url('https://cdnoss.zhizuoh5.com/syspic/scene/o_1cnh7n57t1soc0714holkkm6ng.jpg');
-        }
-
-        .kpicon_loaders {
-            position: absolute;
-            z-index: 20;
-            width: 200px;
-            height: 200px;
-            left: 50%;
-            top: 50%;
-            margin-top: -100px;
-            margin-left: -100px;
-            -ms-flex-pack: center;
-            -ms-flex-align: center;
-            -webkit-box-pack: center;
-            -webkit-justify-content: center;
-            -moz-box-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            -moz-box-align: center;
-            align-items: center;
-            box-sizing: border-box;
-            display: flex;
-        }
-
-        #code {
-            position: fixed;
-            right: 30%;
-            top: 50%;
-            margin-right: -120px;
-            margin-top: -243px;
-            background: rgba(255,255,255,.7);
-            padding: 10px 20px;
-            border-radius: 8px;
-        }
-    </style>
-    <style>
-        /*用户专用样式*/
-        body.code_U100510V98UUC #code{
-            display: none !important;
-        }
-        body.code_U100510V98UUC .phone_panel{
-            left: 50% !important;
-        }
-    </style>
+  const __main = function() {
+    init()
+  }
+  const buildMark = function(name,data){
+    try{
+      var sa = window.sa
+      sa && sa.track && sa.track(name,data)
+    }catch(e){console.log(e)}
+  }
+  window.buildMark = buildMark
+  __main()
+</script>
+<style>@font-face {font-family: "makafontmakaimmakafont4313492TB1XC11JB1500426538818-33pi5ettf";src: url(blob:http://maka.im/ede713e4-bed6-4cbd-853b-b725cd1cd07e) format("truetype");font-weight: normal; font-style: normal;}</style><style>@font-face {font-family: "makafontmakaimmakafont4313492TB1XC11JB1500426645074-565jk0ttf";src: url(blob:http://maka.im/92bac39d-01b7-44c5-9f34-d94d4e95b274) format("truetype");font-weight: normal; font-style: normal;}</style>
+    <!-- 滚动页面 end -->
 </head>
 <body class="code_S91162K52W">
-<div id="warp">
-    <div id="content">
-                <div id="ppitest" style="width:1in;visible:hidden;padding:0px"></div>
-        <div class="p-index main phoneBox" id="con" style="display: none;">
-            <div class="top"></div>
-            <div class="phone_menubar"></div>
-            <div class="scene_title_baner" style="display: none">
-                <div class="scene_title">绘画书法少儿培训班 暑期培训班 国学文化 毛笔字</div>
-            </div>
-            <div class="nr" id="nr">
-                <div id="audio_btn" class="off">
-                    <div id="yinfu"></div>
-                    <audio loop src="" id="media" autoplay="" preload></audio>
-                </div>
-                                <div id="loading" class="loading">
-                    <div class="loadbox">
-                        <!--<div class="loadlogo" style="background-image: url('/Uploads/syspic/scene/o_1cnh7n57t1soc0714holkkm6ng.jpg ');"></div>-->
-                        <div class="loadlogo"
-                             style="background-image: url('/assets/v2/images/loading.jpg');"></div>
-                        <div class="loadbg" style="background-image: url('/Public/css/images/loading.png')"></div>
+    <!-- 滚动页面 -->
+    <script>
+                !(function(c,b,d,a){c[a]||(c[a]={});c[a].config={pid:"dm9pkj87tz@f9c7ee8c173cd6a",imgUrl:"https://arms-retcode.aliyuncs.com/r.png?",disableHook:true};
+                if( Math.round(Math.random() * 100) > 1) return;
+                with(b)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("crossorigin","",src=d)
+                })(window,document,"https://retcode.alicdn.com/retcode/bl.js","__bl");
+                </script>
+    <!-- 滚动页面 end -->
+    <section class="section-wrap">
+                <div class="section section-1">
+                    <div class="title active">
+                        <p class="tit">CSS3 纵向滚屏翻页，支持键盘，鼠标滚轮操作</p>
                     </div>
                 </div>
-                                            </div>
-            <div class="bottom"></div>
-        </div>
-    </div>
-</div>
+                <div class="section section-2">
+                    <div class="title">
+                        <p class="tit">随便写写意思下!</p>
+                    </div>
+                </div>
+                <div class="section section-3">
+                    <div class="title">
+                        <p class="tit">随便写写意思下</p>
+                    </div>
+                </div>
+                <div class="section section-4">
+                    <div class="title">
+                        <p class="tit">随便写写意思下</p>
+                    </div>
+                </div>
+                <div class="section section-5">
+                    <div class="title">
+                        <p class="tit">随便写写意思下</p>
+                    </div>
+                </div>
+            </section>
+            <!-- <ul class="section-btn">
+              <li class="on"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul> -->
+            <div class="arrow">&laquo;</div>
+        
+        
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript">
+            //此处引用：鼠标滚轮mousewheel插件
+            !function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a:a(jQuery)}(function(a){function b(b){var g=b||window.event,h=i.call(arguments,1),j=0,l=0,m=0,n=0,o=0,p=0;if(b=a.event.fix(g),b.type="mousewheel","detail"in g&&(m=-1*g.detail),"wheelDelta"in g&&(m=g.wheelDelta),"wheelDeltaY"in g&&(m=g.wheelDeltaY),"wheelDeltaX"in g&&(l=-1*g.wheelDeltaX),"axis"in g&&g.axis===g.HORIZONTAL_AXIS&&(l=-1*m,m=0),j=0===m?l:m,"deltaY"in g&&(m=-1*g.deltaY,j=m),"deltaX"in g&&(l=g.deltaX,0===m&&(j=-1*l)),0!==m||0!==l){if(1===g.deltaMode){var q=a.data(this,"mousewheel-line-height");j*=q,m*=q,l*=q}else if(2===g.deltaMode){var r=a.data(this,"mousewheel-page-height");j*=r,m*=r,l*=r}if(n=Math.max(Math.abs(m),Math.abs(l)),(!f||f>n)&&(f=n,d(g,n)&&(f/=40)),d(g,n)&&(j/=40,l/=40,m/=40),j=Math[j>=1?"floor":"ceil"](j/f),l=Math[l>=1?"floor":"ceil"](l/f),m=Math[m>=1?"floor":"ceil"](m/f),k.settings.normalizeOffset&&this.getBoundingClientRect){var s=this.getBoundingClientRect();o=b.clientX-s.left,p=b.clientY-s.top}return b.deltaX=l,b.deltaY=m,b.deltaFactor=f,b.offsetX=o,b.offsetY=p,b.deltaMode=0,h.unshift(b,j,l,m),e&&clearTimeout(e),e=setTimeout(c,200),(a.event.dispatch||a.event.handle).apply(this,h)}}function c(){f=null}function d(a,b){return k.settings.adjustOldDeltas&&"mousewheel"===a.type&&b%120===0}var e,f,g=["wheel","mousewheel","DOMMouseScroll","MozMousePixelScroll"],h="onwheel"in document||document.documentMode>=9?["wheel"]:["mousewheel","DomMouseScroll","MozMousePixelScroll"],i=Array.prototype.slice;if(a.event.fixHooks)for(var j=g.length;j;)a.event.fixHooks[g[--j]]=a.event.mouseHooks;var k=a.event.special.mousewheel={version:"3.1.12",setup:function(){if(this.addEventListener)for(var c=h.length;c;)this.addEventListener(h[--c],b,!1);else this.onmousewheel=b;a.data(this,"mousewheel-line-height",k.getLineHeight(this)),a.data(this,"mousewheel-page-height",k.getPageHeight(this))},teardown:function(){if(this.removeEventListener)for(var c=h.length;c;)this.removeEventListener(h[--c],b,!1);else this.onmousewheel=null;a.removeData(this,"mousewheel-line-height"),a.removeData(this,"mousewheel-page-height")},getLineHeight:function(b){var c=a(b),d=c["offsetParent"in a.fn?"offsetParent":"parent"]();return d.length||(d=a("body")),parseInt(d.css("fontSize"),10)||parseInt(c.css("fontSize"),10)||16},getPageHeight:function(b){return a(b).height()},settings:{adjustOldDeltas:!0,normalizeOffset:!0}};a.fn.extend({mousewheel:function(a){return a?this.bind("mousewheel",a):this.trigger("mousewheel")},unmousewheel:function(a){return this.unbind("mousewheel",a)}})});
+            
+            $(function(){
+                var i=0;
+                var $btn = $('.section-btn li'),
+                    $wrap = $('.section-wrap'),
+                    $arrow = $('.arrow');
+                
+                /*当前页面赋值*/
+                function up(){i++;if(i==$btn.length){i=0};}
+                function down(){i--;if(i<0){i=$btn.length-1};}
+                
+                /*页面滑动*/
+                function run(){
+                    $btn.eq(i).addClass('on').siblings().removeClass('on');	
+                    $wrap.attr("class","section-wrap").addClass(function() { return "put-section-"+i; }).find('.section').eq(i).find('.title').addClass('active');
+                };
+                
+                /*右侧按钮点击*/
+                $btn.each(function(index) {
+                    $(this).click(function(){
+                        i=index;
+                        run();
+                    })
+                });
+                
+                /*翻页按钮点击*/
+                $arrow.one('click',go);
+                function go(){
+                    up();run();	
+                    setTimeout(function(){$arrow.one('click',go)},1000)
+                };
+                
+                /*响应鼠标*/
+                $wrap.one('mousewheel',mouse_);
+                function mouse_(event){
+                    if(event.deltaY<0) {up()}
+                    else{down()}
+                    run();
+                    setTimeout(function(){$wrap.one('mousewheel',mouse_)},1000)
+                };
+                
+                /*响应键盘上下键*/
+                $(document).one('keydown',k);
+                function k(event){
+                    var e=event||window.event;
+                    var key=e.keyCode||e.which||e.charCode;
+                    switch(key)	{
+                        case 38: down();run();	
+                        break;
+                        case 40: up();run();	
+                        break;
+                    };
+                    setTimeout(function(){$(document).one('keydown',k)},1000);
+                }
+            });
+        </script>
+        
 </body>
-<script src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
-
-<script src="/Public/css/waiwan/jquery.min.js"></script>
-<script>
-    (function (window, $) {
-        window.PREFIX_URL_BACK_1 = "http://scene.div.js.cn/";
-        window.PREFIX_URL = "//" + window.location.host + "/";
-        window.PREFIX_S1_URL = "//" + window.location.host + "/";//"/json/";
-        window.PREFIX_S2_URL = "//" + window.location.host + "/index.php";
-        window.PREFIX_S6_URL = "//" + window.location.host + "/index.php";
-        window.PREFIX_HOST = "//" + window.location.host + "/";
-        window.PREFIX_HOST1 = "//" + window.location.host + "/index.php";
-        window.PREFIX_SHOW_HOST = "//" + window.location.host + "/index.php";
-        window.TRACK_HOST = "//" + window.location.host + "/";
-
-        window.PREFIX_FILE_HOST = "https://cdnoss.zhizuoh5.com/";
-        window.IMG_FILE_SUFFIX = "?x-oss-process=style/w750&t=1";
-
-        window.PREFIX_COMPANY_HOST_ARRAY = ["http://" + window.location.host, "http://" + window.location.host];
-        window.OLD_FILE_HOST = "//" + window.location.host + "/index.php";
-        window.CLIENT_CDN = "//" + window.location.host + "/";
-        window.clientWidth = document.documentElement.clientWidth;
-        window.clientHeight = document.documentElement.clientHeight;
-        window.PREFIX_HOST_ARRAY = [
-            "http://" + window.location.host,
-            "http://" + window.location.host,
-            "http://" + window.location.host,
-            "http://" + window.location.host
-        ];
-
-    })
-    // (window, jQuery)
-</script>
-
-
-<script>
-
-    var scene = {
-        id: 69751,
-        code: "S91162K52W",
-        name: "绘画书法少儿培训班 暑期培训班 国学文化 毛笔字",
-        bgAudio: {"url": "{$sceneinfo['musicurl_varchar']}", "name": "", "id": 202382032},
-        pageMode: 0,
-        cover: "",
-        property: '{"triggerLoop":true,"eqAdType":null}'    };
-    // <
-    // php >
-    // if ($sceneinfo['accesscode'])<
-    // /php>
-    //
-    // <
-    // php >
-    // else:<
-    // /php>
-    //
-    // <
-    // php > endif;
-    // <
-    // /php>
-    var $accesscode_v2 = "";
-    if ($accesscode_v2) {
-        eqShow.bootstrapWithPassword();
-    } else {
-        eqShow.bootstrap();
-    }
-
-    (function () {
-        function isMobile() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobi/i.test(navigator.userAgent) ||
-                window.innerWidth < 500;
-        }
-
-        function setScale() {
-            if (window.top !== window) {
-                return;
-            }
-            var pageScale = 1;
-
-            var width = document.documentElement.clientWidth || 320;
-            var height = document.documentElement.clientHeight || 486;
-
-
-            if (width / height >= 320 / 486) {
-                pageScale = height / 486;
-            } else {
-                pageScale = width / 320;
-            }
-            console.log('screen.width', width, 'screen.height', height, 'setScale', pageScale);
-            // meta
-            var content = 'width=320, initial-scale=' + pageScale + ', maximum-scale=' + pageScale + ', user-scalable=no';
-            document.getElementById('viewport').setAttribute('content', content);
-        }
-
-        if (isMobile()) {
-            setScale();
-        }
-
-    })();
-
-</script>
-<script>
-    // 输入法导致页面不归位
-    $(document).on('blur','textarea',function(){
-        window.scroll(0,0);
-        console.log('blur')
-    })
-    // 微信分享配置
-    wx.config({
-        debug: false,
-        appId: 'wx0fb0b660b8d4d406',
-        timestamp: "1574095589",
-        nonceStr: 'oikG1T1DY9dg9gll',
-        signature: 'e3f9f772960f61d91287ee1aa2d397cf02e57798',
-        jsApiList: [
-            'updateAppMessageShareData',
-            'updateTimelineShareData',
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'openLocation',
-            'getLocation'
-        ]
-    });
-    wx.ready(function () {
-        var shareData64 = {
-            title: '绘画书法少儿培训班 暑期培训班 国学文化 毛笔字',
-            desc: '',
-            link: PREFIX_URL_BACK_1 + 'v/S91162K52W',
-            imgUrl: PREFIX_FILE_HOST + 'syspic/scene/o_1cnh7n57t1soc0714holkkm6ng.jpg'
-        };
-        wx.updateAppMessageShareData(shareData64);
-        wx.updateTimelineShareData(shareData64);
-        wx.onMenuShareAppMessage(shareData64);
-        wx.onMenuShareTimeline(shareData64);
-
-    });
-    wx.error(function (res) {
-        //alert(res.errMsg);
-    });
-
-    // 播放音乐
-    $(document).ready(function () {
-        var Hmedia = document.getElementById('media');
-        Hmedia.play();
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            Hmedia.play();
-        }, false);
-
-        //--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
-        document.addEventListener('touchend', function () {
-            function audioAutoPlay() {
-                var audio = document.getElementById('media');
-                if(audio.currentTime === 0){
-                    audio.play();
-                }
-            }
-            audioAutoPlay();
-        });
-
-    });
-
-
-</script>
-
-
-<script>
-    // 防止上拉下拉
-    $.smartScroll = function (container, selectorScrollable) {
-        // 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
-        if (!selectorScrollable || container.data('isBindScroll')) {
-            return;
-        }
-
-        // 是否是搓浏览器
-        // 自己在这里添加判断和筛选
-        var isSBBrowser;
-
-        var data = {
-            posY: 0,
-            maxscroll: 0
-        };
-
-        // 事件处理
-        container.on({
-            touchstart: function (event) {
-                var events = event.touches ? event.touches[0] : event;
-
-                // 先求得是不是滚动元素或者滚动元素的子元素
-                var elTarget = $(event.target);
-
-                if (!elTarget.length) {
-                    return;
-                }
-
-                var elScroll;
-
-                // 获取标记的滚动元素，自身或子元素皆可
-                if (elTarget.is(selectorScrollable)) {
-                    elScroll = elTarget;
-                } else if ((elScroll = elTarget.parents(selectorScrollable)).length == 0) {
-                    elScroll = null;
-                }
-
-                if (!elScroll) {
-                    return;
-                }
-
-                // 当前滚动元素标记
-                data.elScroll = elScroll;
-
-                // 垂直位置标记
-                data.posY = events.pageY;
-                data.scrollY = elScroll.scrollTop();
-                // 是否可以滚动
-                data.maxscroll = elScroll[0].scrollHeight - elScroll[0].clientHeight;
-            },
-            touchmove: function (event) {
-                // 如果不足于滚动，则禁止触发整个窗体元素的滚动
-                if (data.maxscroll <= 0 || isSBBrowser) {
-                    // 禁止滚动
-                    event.preventDefault();
-                }
-                // 滚动元素
-                var elScroll = data.elScroll;
-                // 当前的滚动高度
-                var scrollTop = elScroll.scrollTop();
-
-                // 现在移动的垂直位置，用来判断是往上移动还是往下
-                var events = event.touches ? event.touches[0] : event;
-                // 移动距离
-                var distanceY = events.pageY - data.posY;
-
-                if (isSBBrowser) {
-                    elScroll.scrollTop(data.scrollY - distanceY);
-                    elScroll.trigger('scroll');
-                    return;
-                }
-
-                // 上下边缘检测
-                if (distanceY > 0 && scrollTop == 0) {
-                    // 往上滑，并且到头
-                    // 禁止滚动的默认行为
-                    event.preventDefault();
-                    return;
-                }
-
-                // 下边缘检测
-                if (distanceY < 0 && (scrollTop + 1 >= data.maxscroll)) {
-                    // 往下滑，并且到头
-                    // 禁止滚动的默认行为
-                    event.preventDefault();
-                    return;
-                }
-            },
-            touchend: function () {
-                data.maxscroll = 0;
-            }
-        });
-
-        // 防止多次重复绑定
-        container.data('isBindScroll', true);
-    };
-    $.smartScroll($('#warp'), '#content');
-</script>
-<script src="https://s5.cnzz.com/z_stat.php?id=1275689108&web_id=1275689108" language="JavaScript"></script>
 </html>
