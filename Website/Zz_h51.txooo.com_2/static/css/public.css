@@ -1,0 +1,43 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+
+article,section,header,nav,aside,hgroup,figure,figcaption,footer,dialog{display:block; margin:0;padding:0;}
+
+body{font-size:14px;line-height:1.4286; color:#333333; font-family:'Microsoft YaHei';}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+li{list-style:none;}
+img,fieldset,iframe,input{border:0;}
+input,button,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%;}
+input,select,img{vertical-align:middle; border:none; outline:none;}
+em,i{font-style:normal;}
+span,i,em{display:inline-block;zoom:1;*display:inline;}
+a{text-decoration:none}
+
+.clear{*zoom:1;}
+.clear:after{content:"";display:table;clear:both;}
+
+.left{float:left;}
+.right{float:right}
+.pos_rel{position:relative}
+
+.ov_h{overflow:hidden;}
+
+
+@font-face{
+	font-family:'du-font-fangzheng';
+	src: url('../font/fangzheng.eot'); 
+    src: url('../font/fangzheng.eot#iefix') format('embedded-opentype'), 
+    url('../font/fangzheng.woff') format('woff'), 
+    url('../font/fangzheng.ttf') format('truetype'), 
+    url('../font/fangzheng.svg#du-font-fangzheng') format('svg'); 
+}
+
+
+
+@media screen and (min-width:640px){
+    html{font-size:32px!important;}
+}
+html,body{height:100%;}
+
+.du_fon_1{font-family:'du-font-zzgf';}
